@@ -80,6 +80,7 @@ if(WITH_dzip)
 			ExternalProject_Add(zmq
 				URL "${PROJECT_SOURCE_DIR}/third-party/zeromq-4.1.2.tar.gz"
 				URL_MD5 "159c0c56a895472f02668e692d122685"
+				PATCH_COMMAND sed -ie s/libtool/libtoolize/g  ./autogen.sh
 				PATCH_COMMAND ./autogen.sh
 				CONFIGURE_COMMAND ./configure --enable-static --disable-shared --without-libsodium --without-libgssapi_krb5 --without-documentation --prefix <INSTALL_DIR>
 				INSTALL_DIR "${ZMQ_ROOT}"
